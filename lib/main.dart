@@ -588,22 +588,6 @@ class _HomePageState extends State<HomePage> {
         setState(() => s.bank = c.text.trim());
         await s.save();
       }
-    } else if (v == 'about') {
-      if (!mounted) return;
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: const Text('About'),
-          content: const Text(
-              'This app is a personal visualization tool. It is not linked to '
-              'any financial institution, and balances shown here are not real '
-              'funds.'),
-          actions: [
-            TextButton(
-                onPressed: () => Navigator.pop(ctx), child: const Text('OK'))
-          ],
-        ),
-      );
     } else if (v == 'reset') {
       final ok = await showDialog<bool>(
         context: context,
@@ -644,7 +628,6 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (_) => const [
               PopupMenuItem(value: 'cur', child: Text('Change currency')),
               PopupMenuItem(value: 'bank', child: Text('Rename bank')),
-              PopupMenuItem(value: 'about', child: Text('About')),
               PopupMenuItem(value: 'reset', child: Text('Close account')),
             ],
           ),
